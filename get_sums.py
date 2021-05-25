@@ -3,10 +3,17 @@ import pickle
 import sys
 from pprint import pprint
 
-from .sums import min_list, max_list
+sums_dict = {}
 
-def get_possible_totals(num_digits, dict, total=False, already_have=False):
-    this_dict = dict[num_digits]
+def load_sums_dict(pkl_file):
+    global sums_dict
+    with open(pkl_file,"rb") as f:
+        p = pickle.Unpickler(f)
+        sums_dict = p.load()
+    
+
+def get_possible_totals(num_digits, sums_dict, total=False, already_have=False):
+    this_dict = sums_dict[num_digits]
     if total:
         totals_list = [total]
         if not already_have:
@@ -46,6 +53,9 @@ def report_result(totals_list, remaining_dict, total):
 
 
 if __name__ == "__main__":
+    from sums import min_list, max_list
+
+
     usage = '''
 Usage: get_sums.py number_of_digits total [already_have]
 where 
@@ -80,12 +90,12 @@ where
             print(usage)
             exit()
 
-    # if alternative filename is desired, re-write the code to take a -f 'filename' option. This is what it was before I allowed extra numberic args
+    # if alternative pkl_file is desired, re-write the code to take a -f 'pkl_file' option. This is what it was before I allowed extra numberic args
     # if len(sys.argv) > 3:
-    #     filename = sys.argv[3]+'.pkl'
+    #     pkl_file = sys.argv[3]+'.pkl'
     # else:
-    #     filename = 'all_sums.pkl'
-    filename = 'all_sums.pkl'
+    #     pkl_file = 'all_sums.pkl'
+    pkl_file = 'all_sums.pkl'
 
     already_have = []
     if len(sys.argv) > 3:
@@ -96,10 +106,8 @@ where
             print(usage)
             exit()
 
-    with open(filename,"rb") as f:
-        p = pickle.Unpickler(f)
-        dict = p.load()
+    load_sums_dict(pkl_file)
     
-    totals_list, remaining_dict = get_possible_totals(num_digits, dict, total, already_have)
+    totals_list, remaining_dict = get_possible_totals(num_digits, sums_dict, total, already_have)
 
     report_result(totals_list, remaining_dict, total)
