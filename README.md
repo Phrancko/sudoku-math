@@ -3,7 +3,7 @@ Provides assistance with the simple math required for sudoku variant puzzles, li
 
 ## What is this?
 
-Sudoku variant puzzles are variations on the classic sudoku where you have to arrange the digits 1 to 9 in a 9x9 grid which is divided into nine 3x3 boxes of 9 cells every row, every column and each 3x3 box contains the digits 1 to 9.
+Sudoku variant puzzles are variations on the classic sudoku in which you have to arrange the digits 1 to 9 in a 9x9 grid which is divided into nine 3x3 boxes of 9 cells such that every row, every column and each 3x3 box contains the digits 1 to 9.
 
 There are a large number of variants to the classic sudoku. They are explained and demonstrated on the terrific YouTube channel, Cracking the Cryptic. Many of the variants ask you to fill a number of cells with digits which add to a specific total.  Sometimes the number of digits is known but the total is not known (as in arrow sudokus and some killer sudokus) and sometimes both the number of digits is known and the total is known (more common killer sudokus). Sometimes one or more of the digits being summed are already known.
 
@@ -24,7 +24,7 @@ I found myself spending far too much time trying to enumerate the possibilities 
 3. [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
 4. Yes! the only possibilities are {8: [[1, 2, 5], [1, 3, 4]]}
 
-Note: Some variants allow muliple digits to have repeated digits in the numbers being summed. This utility does not help with those. It only works on total made from non-repeating digits.
+Note: Some variants allow muliple digits to have repeated digits in the numbers being summed. This utility does not help with those. It only works on totals made from non-repeating digits.
 
 ## Syntax
 
@@ -50,3 +50,7 @@ And the fourth is given by:
 - create_sums.py - the program that generated all the possible answers as a dictionary whose keys are totals and whose values are the lists of non-repeating digits that produce that total. It then saved the data in the pickle file. The program takes a few minutes to run.
 - all_sums.pkl - the pickle file that stores the result of create_sums.py
 - sums.py - the module that contains the work horses for both create_sums.py and get_sums.py
+
+## Who did this?
+This module was created and is maintained by Frank H. Jernigan.
+
