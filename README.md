@@ -52,5 +52,5 @@ And the fourth is given by:
 - sums.py - the module that contains the work horses for both create_sums.py and get_sums.py
 
 ## Who did this?
-This module was created and is maintained by Frank H. Jernigan.
+This module was created and is maintained by Frank H. Jernigan aka Phrancko.
 
