@@ -3,7 +3,7 @@ import pickle
 import sys
 from pprint import pprint
 
-from sums import min_list, max_list
+from .sums import min_list, max_list
 
 def get_possible_totals(num_digits, dict, total=False, already_have=False):
     this_dict = dict[num_digits]
