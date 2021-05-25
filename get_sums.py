@@ -12,7 +12,8 @@ def load_sums_dict(pkl_file):
         sums_dict = p.load()
     
 
-def get_possible_totals(num_digits, sums_dict, total=False, already_have=False):
+def get_possible_totals(num_digits, total=False, already_have=False):
+    global sums_dict
     this_dict = sums_dict[num_digits]
     if total:
         totals_list = [total]
@@ -108,6 +109,6 @@ where
 
     load_sums_dict(pkl_file)
     
-    totals_list, remaining_dict = get_possible_totals(num_digits, sums_dict, total, already_have)
+    totals_list, remaining_dict = get_possible_totals(num_digits, total, already_have)
 
     report_result(totals_list, remaining_dict, total)
