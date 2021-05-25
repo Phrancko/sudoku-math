@@ -37,13 +37,20 @@ def get_possible_totals(num_digits, dict, total=False, already_have=False):
         totals_list = list(remaining_dict.keys())
     return totals_list, remaining_dict
 
+def report_result(totals_list, remaining_dict, total):
+    if not total:
+        print("The possible totals are:")
+        print(totals_list)
+    print('\nAll the possible combinations are:')
+    pprint(remaining_dict)
+
 
 if __name__ == "__main__":
     usage = '''
-Usage: python get_sums.py number_of_digits total [already_have]
+Usage: get_sums.py number_of_digits total [already_have]
 where 
     - number_of_digits is an integer from 1 to 9
-    - total is either 0 or an appropriate number less than or equal to 45 (if 0, then all possible totals are considered)
+    - total is either 0 (default) or an appropriate number less than or equal to 45. If 0, then all possible totals are considered
     - already_have (optional) is a list of numbers already contributing to the total
       '''
 
@@ -94,5 +101,5 @@ where
         dict = p.load()
     
     totals_list, remaining_dict = get_possible_totals(num_digits, dict, total, already_have)
-    pprint(totals_list)
-    pprint(remaining_dict)
+
+    report_result(totals_list, remaining_dict, total)
