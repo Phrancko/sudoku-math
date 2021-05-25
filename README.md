@@ -37,13 +37,21 @@ where
     - already_have (optional) is a list of numbers already contributing to the total
 ```      
 To get the answer to the first question above:
-`./get_sums.py 4 14`
+```
+./get_sums.py 4 14
+```
 The second is answered by:
-`./get_sums.py 5 14 5 6`
+```
+./get_sums.py 5 14 5 6
+```
 The third answer comes from:
-`./get_sums.py 5`
+```
+./get_sums.py 5
+```
 And the fourth is given by:
-`./get_sums.py 8`
+```
+./get_sums.py 8
+```
 
 ## What are all these files?
 - get_sums.py - the primary utility, reads the pickle file all_sums.pkl and uses the data to quickly produce the output
