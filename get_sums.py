@@ -18,11 +18,13 @@ def get_possible_totals(num_digits, total=False, already_have=False, excluded_di
     global sums_dict
     this_dict = sums_dict[num_digits]
     remaining_dict = {}
-    if total:
-        totals_list = [total]
-        if not already_have:
-            remaining_dict = {total : this_dict[total]}
-        
+    if total:  
+        if total in this_dict:
+            totals_list = [total]
+            if not already_have:
+                remaining_dict = {total : this_dict[total]}
+        else:
+            return [], {}
     else:
         totals_list = list(this_dict.keys())
         remaining_dict = this_dict
