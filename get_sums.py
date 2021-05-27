@@ -12,9 +12,12 @@ def load_sums_dict(pkl_file):
         sums_dict = p.load()
     
 
-def get_possible_totals(num_digits, total=False, already_have=False):
+def get_possible_totals(num_digits, total=False, already_have=False, excluded_digits=False):
+    # import ipdb; ipdb.set_trace()
+
     global sums_dict
     this_dict = sums_dict[num_digits]
+    remaining_dict = {}
     if total:
         totals_list = [total]
         if not already_have:
@@ -26,7 +29,6 @@ def get_possible_totals(num_digits, total=False, already_have=False):
 
     if already_have:
         # Find only the ones that already have the given digits and generate the lists of remaining ones
-        remaining_dict = {}
         
         for total in totals_list:
             possibles_for_total = this_dict[total]
@@ -43,6 +45,27 @@ def get_possible_totals(num_digits, total=False, already_have=False):
                     new_digits_list.append(digits_list)
                     remaining_dict[total] = new_digits_list
         totals_list = list(remaining_dict.keys())
+    
+    # import ipdb; ipdb.set_trace()
+
+    if excluded_digits:
+        totals_list = []
+        updated_remaining_dict = {}
+        for total, digits_lists in remaining_dict.items():
+            for dig_list in digits_lists:
+                exclude_this_list = False
+                for excluded in excluded_digits:
+                    # if any in excluded_digits, then break out of this loop to exclude the list
+                    if excluded in dig_list:
+                        exclude_this_list = True
+                        break
+                if not exclude_this_list:
+                    updated_lists = updated_remaining_dict.get(total, [])
+                    updated_lists.append(dig_list)
+                    updated_remaining_dict[total] = updated_lists
+            if total in updated_remaining_dict:
+                totals_list.append(total)
+        remaining_dict = updated_remaining_dict
     return totals_list, remaining_dict
 
 def report_result(totals_list, remaining_dict, total):
