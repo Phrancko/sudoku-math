@@ -13,7 +13,7 @@ Sometimes the exact number of digits is not known but the total is known (sandwi
 
 In tackling sudoku variants I often found myself asking questions like:
 1. What are all the ways four different digits can add up to 14 without repeating any digits?
-2. I know I need 5 digits that add up to 14 and I know two of them are 5 and 6. What combinations are possible with no repeats?
+2. I know I need 5 digits that add up to 24 and I know two of them are 5 and 6. What combinations are possible with no repeats?
 3. What totals are possible given exactly five digits with no repeats?
 4. If there are 3 different digits that add up to 8, how do I know one of the digits must be a 1?
 
