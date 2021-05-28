@@ -17,7 +17,7 @@ def get_possible_totals(num_digits, total=False, already_have=False, excluded_di
 
     global sums_dict
     this_dict = sums_dict[num_digits]
-    remaining_dict = {}
+    
     if total:  
         if total in this_dict:
             totals_list = [total]
@@ -31,7 +31,8 @@ def get_possible_totals(num_digits, total=False, already_have=False, excluded_di
 
     if already_have:
         # Find only the ones that already have the given digits and generate the lists of remaining ones
-        
+        # import ipdb; ipdb.set_trace()
+        remaining_dict = {}
         for total in totals_list:
             possibles_for_total = this_dict[total]
             for digits_list in possibles_for_total:
